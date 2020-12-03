@@ -109,7 +109,7 @@ endif::[]
 {group} #:: DS-01
 
 [%interactive]
-- [] {Enseignants}
+- [ ] {Enseignants}
 - [ ] 1
 - [ ] 2
 - [ ] 3
