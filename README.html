@@ -683,7 +683,7 @@ pre.rouge {
 </li>
 <li><a href="#_abstraction_of_the_problem">Abstraction of the problem</a>
 <ul class="sectlevel2">
-<li><a href="#_a_new_application_too_bad">A new application &#8230;&#8203; too bad &#8230;&#8203;</a></li>
+<li><a href="#_a_new_application_too_bad">A new bankApp.application &#8230;&#8203; too bad &#8230;&#8203;</a></li>
 <li><a href="#_let_us_abstract_a_little_bit_the_problem">Let us abstract a little bit the problem</a></li>
 </ul>
 </li>
@@ -896,12 +896,12 @@ Bert Bates, Eric Freeman, Elisabeth Freeman, Kathy Sierra. Editions O&#8217;Reil
 <h3 id="_the_problem">The problem</h3>
 <div class="paragraph">
 <p>Import the following java source Banking project <a href="BankApp.zip" class="bare">BankApp.zip</a>.
-This application has 3 main classes:</p>
+This bankApp.application has 3 main classes:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>Account`</code>: the bank accounts</p>
+<p><code>Account`</code>: the bankApp.application.bank accounts</p>
 </li>
 <li>
 <p><code>BankAgency</code>: class, using Account to deal with Bank Agencies</p>
@@ -919,7 +919,7 @@ This application has 3 main classes:</p>
 <h3 id="_the_goal">The goal</h3>
 <div class="paragraph">
 <p>The purpose of this lab is to move from a functional / procedural approach to an object approach.
-You will rewrite and refactor the application code in several steps to obtain a code:</p>
+You will rewrite and refactor the bankApp.application code in several steps to obtain a code:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1117,9 +1117,9 @@ Choice ?</pre>
 <p>Create the following packages:</p>
 <div class="listingblock">
 <div class="content">
-<pre>   application
-   application.action
-   application.actionlist</pre>
+<pre>   bankApp.application
+   bankApp.application.action
+   bankApp.application.actionlist</pre>
 </div>
 </div>
 </li>
@@ -1128,7 +1128,7 @@ Choice ?</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kn">package</span> <span class="nn">action</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">bank.BankAgency</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">bankApp.application.bank.BankAgency</span><span class="o">;</span>
 <span class="cm">/**
  * An Action is an object that implements some action of a user's menu.&lt;BR&gt;
  * It is defined by a message, an optional code, an execute method to "do" the action.
@@ -1164,7 +1164,7 @@ Choice ?</pre>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Create a class (the name <code>ActionAccountsLists</code> seems suitable) in the package <code>application.action</code>,</p>
+<p>Create a class (the name <code>ActionAccountsLists</code> seems suitable) in the package <code>bankApp.application.action</code>,</p>
 </li>
 <li>
 <p>which implements <code>Action</code>,</p>
@@ -1176,13 +1176,13 @@ Choice ?</pre>
 <p>write the code including a correctly configured constructor,</p>
 </li>
 <li>
-<p>the <code>execute(BankAgency)</code> method will display the screen of the list of bank agency accounts as a parameter.</p>
+<p>the <code>execute(BankAgency)</code> method will display the screen of the list of bankApp.application.bank agency accounts as a parameter.</p>
 </li>
 </ol>
 </div>
 </li>
 <li>
-<p>In the same way, declare a class for the action "View an account (by its number)" (class <code>ActionSeeAccountNumber</code>) in the package <code>application.action</code>.</p>
+<p>In the same way, declare a class for the action "View an account (by its number)" (class <code>ActionSeeAccountNumber</code>) in the package <code>bankApp.application.action</code>.</p>
 </li>
 </ol>
 </div>
@@ -1234,7 +1234,7 @@ Choice ?</pre>
 </div>
 </li>
 <li>
-<p>Declare a class <code>GenericActionList</code> in the <code>application.actionlist</code> package,</p>
+<p>Declare a class <code>GenericActionList</code> in the <code>bankApp.application.actionlist</code> package,</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
@@ -1258,7 +1258,7 @@ Choice ?</pre>
 <p>You must obtain an architecture like this (be careful, slightly different):</p>
 </div>
 <div class="paragraph">
-<div class="title">Structure of the application (sorry for the French)</div>
+<div class="title">Structure of the bankApp.application (sorry for the French)</div>
 <p><span class="image"><img src="images/applicationbanque.svg" alt="applicationbanque"></span></p>
 </div>
 </div>
@@ -1325,9 +1325,9 @@ Choice ?</pre>
 <h2 id="_abstraction_of_the_problem">Abstraction of the problem</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_a_new_application_too_bad">A new application &#8230;&#8203; too bad &#8230;&#8203;</h3>
+<h3 id="_a_new_application_too_bad">A new bankApp.application &#8230;&#8203; too bad &#8230;&#8203;</h3>
 <div class="paragraph">
-<p>Suppose we have to develop an application for managing a list of students (Student and StudentsGroup classes). It is based on a menu allowing to:</p>
+<p>Suppose we have to develop an bankApp.application for managing a list of students (Student and StudentsGroup classes). It is based on a menu allowing to:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1360,7 +1360,7 @@ Choice ?</pre>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Considering the new classes <code>Student</code> and <code>StudentsGroup</code>, can we reuse the <code>Action</code> and <code>ActionList</code> interfaces in the new application as is (without modifying them)?</p>
+<p>Considering the new classes <code>Student</code> and <code>StudentsGroup</code>, can we reuse the <code>Action</code> and <code>ActionList</code> interfaces in the new bankApp.application as is (without modifying them)?</p>
 </li>
 <li>
 <p>If yes, why ?</p>
@@ -1465,7 +1465,7 @@ Choice ?</pre>
 <p>Everything must work.</p>
 </li>
 <li>
-<p>All you have to do is make the new application.</p>
+<p>All you have to do is make the new bankApp.application.</p>
 </li>
 </ol>
 </div>
@@ -1529,7 +1529,7 @@ Choice ?</pre>
 <div class="sect2">
 <h3 id="_and_what_about_actionlist">And what about <code>ActionList</code> ?</h3>
 <div class="paragraph">
-<p><code>GenericActionList</code> which implements a menu (which implements <code>ActionList</code>) is here created specifically for BankAgency. But is this necessary in each application? (assuming nothing is displayed from the BankAgency). We should be able to make a "generic" class for managing menus composed of actions and reusable in each application.</p>
+<p><code>GenericActionList</code> which implements a menu (which implements <code>ActionList</code>) is here created specifically for BankAgency. But is this necessary in each bankApp.application? (assuming nothing is displayed from the BankAgency). We should be able to make a "generic" class for managing menus composed of actions and reusable in each bankApp.application.</p>
 </div>
 <div class="paragraph">
 <p>So let&#8217;s try:</p>
@@ -1561,7 +1561,7 @@ Choice ?</pre>
 <p>Modify whenever necessary to use generic type E</p>
 </li>
 <li>
-<p>Remove all access to BankAgency (display name of bank, &#8230;&#8203;)</p>
+<p>Remove all access to BankAgency (display name of bankApp.application.bank, &#8230;&#8203;)</p>
 </li>
 <li>
 <p>You should get to the end &#8230;&#8203;</p>
@@ -1594,7 +1594,7 @@ Choice ?</pre>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Suppose we want to use our application in a different system where entries and displays are not done on the application&#8217;s execution terminal &#8230;&#8203; The instructions using <code>new Scanner(System.in)</code> or <code>System.out.println &#8230;&#8203;</code> become obsolete.</p>
+<p>Suppose we want to use our bankApp.application in a different system where entries and displays are not done on the bankApp.application&#8217;s execution terminal &#8230;&#8203; The instructions using <code>new Scanner(System.in)</code> or <code>System.out.println &#8230;&#8203;</code> become obsolete.</p>
 </li>
 <li>
 <p>Like the agency used in processing, these 2 elements are now part of the <strong>execution context</strong> of the actions.</p>
@@ -1616,11 +1616,11 @@ Choice ?</pre>
 <p>Make a copy of the project from the previous section (without genericity).</p>
 </li>
 <li>
-<p>In the <code>application</code> package, create a <code>ApplicationContextBankAgency</code> class implementing the <code>Singleton</code> pattern allowing access:</p>
+<p>In the <code>bankApp.application</code> package, create a <code>ApplicationContextBankAgency</code> class implementing the <code>Singleton</code> pattern allowing access:</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>At the "in progress" bank branch.</p>
+<p>At the "in progress" bankApp.application.bank branch.</p>
 </li>
 <li>
 <p>To the <code>Scanner</code> to use. Initialize it here with a Scanner on System.in but something else could be used (a file, a stream to a terminal, &#8230;&#8203;).</p>
@@ -1639,7 +1639,7 @@ Choice ?</pre>
 <p>The <code>Action</code> and <code>ActionList</code> classes now using the <code>ApplicationContextBankAgency</code> type (instead of` BankAgency`)</p>
 </li>
 <li>
-<p>Modify access to the bank branch using <code>ApplicationContextBankAgency</code>.</p>
+<p>Modify access to the bankApp.application.bank branch using <code>ApplicationContextBankAgency</code>.</p>
 </li>
 <li>
 <p>Modify access to standard input using <code>ApplicationContextBankAgency</code>.</p>

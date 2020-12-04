@@ -102,19 +102,19 @@ endif::[]
 //------------------------------------ 
 == {assignment}
 
-{lastName}:: BRUEL
+{lastName}:: Mullahmetov
 
-{firstName}:: Jean-Michel
+{firstName}:: Rinat
 
-{group} #::
+{group} #:: DS-01
 
 [%interactive]
-- [X] {Enseignants}
+- [ ] {Enseignants}
 - [ ] 1
 - [ ] 2
 - [ ] 3
 - [ ] 4
-- [ ] Innopolis
+- [X] Innopolis
 
 //------------------------------------ 
 == {requirements}
@@ -227,9 +227,9 @@ endif::[]
 === The problem
 
 Import the following java source Banking project link:BankApp.zip[].
-This application has 3 main classes:
+This bankApp.application has 3 main classes:
 
-* `{cpte}``: the bank accounts
+* `{cpte}``: the bankApp.application.bank accounts
 * `{ag}`: class, using {cpte} to deal with Bank Agencies
 * `{app}`: the actual app with the (badly implemented) menus.
 
@@ -238,7 +238,7 @@ This last class (`{app}`) has been written in a procedural approach, far from be
 === The goal
 
 The purpose of this lab is to move from a functional / procedural approach to an object approach. 
-You will rewrite and refactor the application code in several steps to obtain a code:
+You will rewrite and refactor the bankApp.application code in several steps to obtain a code:
 
 *	easier to maintain,
 *	easier to extend,
@@ -351,9 +351,9 @@ We will modify the code into several classes observing that:
 .	Create the following packages:
 +
 -------
-   application
-   application.action
-   application.actionlist
+   bankApp.application
+   bankApp.application.action
+   bankApp.application.actionlist
 -------
 +
 .	Study the following code and use it accordingly in your `action` package:
@@ -361,7 +361,7 @@ We will modify the code into several classes observing that:
 [source,java]
 ----
 package action;
-import bank.BankAgency;
+import bankApp.application.bank.BankAgency;
 /**
  * An Action is an object that implements some action of a user's menu.<BR>
  * It is defined by a message, an optional code, an execute method to "do" the action.
@@ -396,7 +396,7 @@ public interface Action  {
 .. which implements `Action`,
 .. with two attributes `(message, code)`
 .. write the code including a correctly configured constructor,
-.. the `execute(BankAgency)` method will display the screen of the list of bank agency accounts as a parameter.
+.. the `execute(BankAgency)` method will display the screen of the list of bankApp.application.bank agency accounts as a parameter.
 . In the same way, declare a class for the action "View an account (by its number)" (class `ActionSeeAccountNumber`) in the package `application.action`.
 
 === User menus as objects
@@ -451,7 +451,7 @@ public interface ActionList extends Action {
 
 You must obtain an architecture like this (be careful, slightly different):
 
-.Structure of the application (sorry for the French)
+.Structure of the bankApp.application (sorry for the French)
 image:applicationbanque.svg[]
 
 === And now: go ! Let's check how easy the code is now to evolve
@@ -485,9 +485,9 @@ endif::prof[]
 
 == Abstraction of the problem
 
-=== A new application ... too bad ...
+=== A new bankApp.application ... too bad ...
 
-Suppose we have to develop an application for managing a list of students (Student and StudentsGroup classes). It is based on a menu allowing to:
+Suppose we have to develop an bankApp.application for managing a list of students (Student and StudentsGroup classes). It is based on a menu allowing to:
 
 * See the list of students.
 * Display a student by name.
@@ -500,7 +500,7 @@ Does that remind you if something ?
 
 Questions:
 
-. Considering the new classes `Student` and `StudentsGroup`, can we reuse the `Action` and `ActionList` interfaces in the new application as is (without modifying them)?
+. Considering the new classes `Student` and `StudentsGroup`, can we reuse the `Action` and `ActionList` interfaces in the new bankApp.application as is (without modifying them)?
 . If yes, why ?
 . If not why ?
 
@@ -597,7 +597,7 @@ public interface ActionList<E> extends Action<E>{
 +
 . Modify each class created (the `Action` then `ActionList` then the `main ()`) to either implement the correct instantiation of the interfaces, or correctly instantiate the objects.
 . Everything must work.
-. All you have to do is make the new application.
+. All you have to do is make the new bankApp.application.
 
 == Let's go a little bit further: even more abstraction
 
@@ -646,7 +646,7 @@ public interface ActionList<E> extends Action<E>{
 
 === And what about `ActionList` ?
 
-`GenericActionList` which implements a menu (which implements `ActionList`) is here created specifically for {ag}. But is this necessary in each application? (assuming nothing is displayed from the {ag}). We should be able to make a "generic" class for managing menus composed of actions and reusable in each application.
+`GenericActionList` which implements a menu (which implements `ActionList`) is here created specifically for {ag}. But is this necessary in each bankApp.application? (assuming nothing is displayed from the {ag}). We should be able to make a "generic" class for managing menus composed of actions and reusable in each bankApp.application.
 
 So let's try:
 
@@ -663,7 +663,7 @@ public class GenericActionList<E>
 +
 . Attention, all the code will now "warn" in red! normal ...
 . Modify whenever necessary to use generic type E
-. Remove all access to {ag} (display name of bank, ...)
+. Remove all access to {ag} (display name of bankApp.application.bank, ...)
 . You should get to the end ...
 . Finally in the main there will be some "horns warnings" on the creation of objects of this new class because it will be necessary to indicate the type parameter at creation.
 +
@@ -676,7 +676,7 @@ ATTENTION: making a generic class is not always that simple. Here the case has b
 
 The problem :
 
-. Suppose we want to use our application in a different system where entries and displays are not done on the application's execution terminal ... The instructions using `new Scanner(System.in)` or `System.out.println ...` become obsolete.
+. Suppose we want to use our bankApp.application in a different system where entries and displays are not done on the bankApp.application's execution terminal ... The instructions using `new Scanner(System.in)` or `System.out.println ...` become obsolete.
 . Like the agency used in processing, these 2 elements are now part of the *execution context* of the actions.
 . Other elements could be used: transactions in progress (air reservations), databases, various connections, ...
 . It is therefore necessary to create an *execution context* which will be in parameter of the `Action` and `ActionList`.
@@ -685,12 +685,12 @@ Let's go!
 
 . Make a copy of the project from the previous section (without genericity).
 . In the `application` package, create a `ApplicationContextBankAgency` class implementing the `Singleton` pattern allowing access:
-.. At the "in progress" bank branch.
+.. At the "in progress" bankApp.application.bank branch.
 .. To the `Scanner` to use. Initialize it here with a Scanner on System.in but something else could be used (a file, a stream to a terminal, ...).
 .. At the `PrintStream` output to use. Here it will be System.out but something else could be used (a file, a stream to a terminal, ...).
 . Refactor all the code:
 .. The `Action` and `ActionList` classes now using the `ApplicationContextBankAgency` type (instead of` BankAgency`)
-.. Modify access to the bank branch using `ApplicationContextBankAgency`.
+.. Modify access to the bankApp.application.bank branch using `ApplicationContextBankAgency`.
 .. Modify access to standard input using `ApplicationContextBankAgency`.
 .. Modify access to standard output using `ApplicationContextBankAgency`.
 . It works ??
